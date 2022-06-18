@@ -47,4 +47,24 @@
             android:name="details"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.project.learnify.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" >
+        <action
+            android:id="@+id/action_contactFragment_to_viewPagerFragment2"
+            app:destination="@id/viewPagerFragment"
+            app:popUpTo="@id/homeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.project.learnify.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_aboutFragment_to_viewPagerFragment2"
+            app:destination="@id/viewPagerFragment"
+            app:popUpTo="@id/homeScreenFragment" />
+    </fragment>
 </navigation>

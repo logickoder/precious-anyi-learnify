@@ -5,6 +5,7 @@ import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.project.learnify.adapter.CourseAdapter
@@ -19,7 +20,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     private lateinit var courseList: ArrayList<Courses>
     private lateinit var courseAdapter: CourseAdapter
     private lateinit var recyclerView: RecyclerView
-    private var isGridLayoutManager = true
+    private var isLinearLayoutManager = true
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,10 +59,10 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             " courseList.add(Courses(R.drawable.course_image,\n" +
                     "            \"Android App Development Course For Beginners\",\n" +
                     "        \" Welcome To The Complete Android Developer Course: Beginner To Advanced\\n\" +\n" +
-                    "                \"⇉ Watch the promo video to see How You Can Begin Building And Developing Your Very Own Android Applications Today!\\n\" +\n" +
-                    "                \"⇉ This Course is MASSIVE! You receive over 17+ hours of video content and 140+ lectures!\\n\" +\n" +
-                    "                \"⇉ Join Over 275,000+ Students Who Have Enrolled In My Udemy Courses This Year!\\n\" +\n" +
-                    "                \"⇉ 7,500+ Five Star Reviews on our courses prove Students Who Enrolling Are Getting Real Results!\\n\" +\n" +
+                    "                \" Watch the promo video to see How You Can Begin Building And Developing Your Very Own Android Applications Today!\\n\" +\n" +
+                    "                \" This Course is MASSIVE! You receive over 17+ hours of video content and 140+ lectures!\\n\" +\n" +
+                    "                \" Join Over 275,000+ Students Who Have Enrolled In My Udemy Courses This Year!\\n\" +\n" +
+                    "                \" 7,500+ Five Star Reviews on our courses prove Students Who Enrolling Are Getting Real Results!\\n\" +\n" +
                     "                \"Then this course is for you! Click \\\"Take This Course Now\\\" For Instant Life-Time Access!\"))"))
 
         courseList.add(Courses(R.drawable.unit_testing,
@@ -84,7 +85,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         //inflate the layout
         inflater.inflate(R.menu.layout_menu, menu)
 
-        val layoutButton = menu?.findItem(R.id.switch_action)
+        val layoutButton = menu?.findItem(R.id.change_layout)
         if (layoutButton != null) {
             setIcon(layoutButton)
         }
@@ -92,11 +93,11 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         return true
     }
     private fun chooseLayout(){
-        if (isGridLayoutManager){
-            recyclerView.layoutManager = GridLayoutManager(requireContext(),2)
+        if (isLinearLayoutManager){
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         } else {
-            recyclerView.layoutManager = StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
+            recyclerView.layoutManager = GridLayoutManager(requireContext(), GridLayoutManager.VERTICAL)
         }
         recyclerView.adapter = courseAdapter
 
@@ -104,7 +105,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     private fun setIcon(menuItem: MenuItem) {
 
         menuItem.icon =
-            if (isGridLayoutManager)
+            if (isLinearLayoutManager)
                 ContextCompat.getDrawable(requireContext(),R.drawable.ic_grid)
             else {
                 ContextCompat.getDrawable(requireContext(),R.drawable.ic_staggered_grid)
@@ -112,9 +113,10 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
         return when(item.itemId) {
-            R.id.switch_action -> {
-                isGridLayoutManager = !isGridLayoutManager
+            R.id.change_layout -> {
+                isLinearLayoutManager = !isLinearLayoutManager
                 chooseLayout()
                 setIcon(item)
                 return true

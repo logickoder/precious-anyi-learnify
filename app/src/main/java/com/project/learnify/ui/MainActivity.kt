@@ -9,11 +9,11 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.project.learnify.HomeScreenFragment
-import com.project.learnify.R
+import com.project.learnify.*
 import com.project.learnify.adapter.CourseAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -37,13 +37,30 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
-            R.id.kebab -> {
-
-                return true
-            }
-
-            else -> super.onOptionsItemSelected(item)
+        if(item.itemId == R.id.contact_us){
+            var a = supportFragmentManager.beginTransaction()
+            var b = ContactFragment()
+            a.replace(R.id.fragmentContainerView, b)
+            a.commit()
         }
+        else if (item.itemId == R.id.about_us){
+            var a = supportFragmentManager.beginTransaction()
+            var b = AboutFragment()
+            a.replace(R.id.fragmentContainerView, b)
+            a.commit()
+        }
+        else if (item.itemId == R.id.change_layout) {
+            var a = supportFragmentManager.beginTransaction()
+            var b = LayoutFragment()
+            a.replace(R.id.fragmentContainerView, b)
+            a.commit()
+        }
+        return  super.onOptionsItemSelected(item)
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(androidx.navigation.fragment.R.id.nav_host_fragment_container) as NavHostFragment
+        val navController = navHostFragment.navController
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
