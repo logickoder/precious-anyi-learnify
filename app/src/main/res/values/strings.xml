@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Learnify</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="learning_image">Learning image</string>
+    <string name="next">Next</string>
+    <string name="switch_icon">switch_icon</string>
+    <string name="online_learning">Online Learning</string>
+    <string name="platform">Platform</string>
+    <string name="learn_android_development_from_hundreds_of">Learn android development from hundreds of</string>
+    <string name="online_video_courses_with_new_additions_published">online video courses with new additions published</string>
+    <string name="ready_set">Ready, Set</string>
+    <string name="let_s_go">Let\'s Go!</string>
+    <string name="begin_your_learning_journey_today">Begin your learning journey today</string>
+    <string name="learn_at_your">Learn At Your</string>
+    <string name="pace">Pace</string>
+    <string name="anywhere_anytime_start_learning_today">Anywhere, anytime. Start learning today</string>
+    <string name="android_for_beginners">
+        Welcome To The Complete Android Developer Course: Beginner To Advanced
+⇉ Watch the promo video to see How You Can Begin Building And Developing Your Very Own Android Applications Today!
+⇉ This Course is MASSIVE! You receive over 17+ hours of video content and 140+ lectures!
+⇉ Join Over 275,000+ Students Who Have Enrolled In My Udemy Courses This Year!
+⇉ 7,500+ Five Star Reviews on our courses prove Students Who Enrolling Are Getting Real Results!
+Then this course is for you! Click "Take This Course Now" For Instant Life-Time Access!
+    </string>
+</resources>
