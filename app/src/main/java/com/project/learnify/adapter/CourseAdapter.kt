@@ -11,10 +11,10 @@ import com.project.learnify.HomeScreenFragmentDirections
 import com.project.learnify.R
 import com.project.learnify.model.Courses
 
-class CourseAdapter(private val courseList: ArrayList<Courses>) :
+class CourseAdapter(private val courseList: List<Courses>) :
     RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
 
-    class CourseViewHolder(view: View): RecyclerView.ViewHolder(view){
+    class CourseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         //initializing the views in item_design xml
         val courseTitle: TextView = view.findViewById(R.id.mcourse_title)
@@ -36,7 +36,6 @@ class CourseAdapter(private val courseList: ArrayList<Courses>) :
             val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToCourseDetailsFragment(
                 course.courseTitle,course.image,course.courseDetail)
             holder.itemView.findNavController().navigate(action)
-
         }
     }
 
